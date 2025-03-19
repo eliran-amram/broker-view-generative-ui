@@ -1,0 +1,24 @@
+config:
+  has_celery: false
+  has_db: false
+  vars:
+    APP_NAME:
+      type: string
+      test-only: true
+      test-value: broker_view_generative_ui
+    ENV:
+      type: string
+      test-only: true
+      test-value: test
+    EXCLUDE_URL_PATTERNS:
+      type: list
+      default-value: '/health_check'
+      required: false
+    EXCLUDE_EXCEPTIONS_FROM_SENTRY:
+      type: list
+      default-value: ''
+      required: false
+    ADMIN_SERVICE_HOST:
+      type: string
+      required: true
+      default-value: 'http://localhost:9003/api'

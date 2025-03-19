@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: broker_view_generative_ui
+  version: 1.0.0
+paths:
+  /bot/ask:
+    get:
+      summary: Ask Bot
+      operationId: ask_bot
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /health_check:
+    get:
+      summary: Health Check
+      operationId: health_check_health_check_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}

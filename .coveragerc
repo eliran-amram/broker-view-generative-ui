@@ -1,0 +1,15 @@
+[run]
+branch = True
+relative_files=True
+source = app
+omit =
+    */client/*
+    */migrations/*
+    */venv/*
+    */.local/*
+    */app/celery/*
+    */app/configuration.py
+    */app/database.py
+    */app/signals.py
+    */app/plugins/auto_generated/*
+    */app/sdk_models/*

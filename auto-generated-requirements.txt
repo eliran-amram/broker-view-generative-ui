@@ -1,0 +1,14 @@
+fastapi~=0.110.0
+uvicorn==0.25.0
+typer ~= 0.12.3
+pydantic~=2.6.3
+atbay-bootstrap~=1.0.0
+command-register-plugin~=1.0.0
+session-manager-plugin[fastapi]~=1.0.0
+error-handling-plugin[fastapi]~=1.0.0
+logger-plugin[fastapi]~=1.0.0
+response-enrich-plugin[fastapi]~=1.0.0
+router-plugin[fastapi]~=1.0.0
+sentry-plugin[fastapi]~=1.0.0
+swagger-plugin[fastapi]~=1.0.0
+dependency-injection-plugin~=1.0.0

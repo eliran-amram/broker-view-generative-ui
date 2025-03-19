@@ -1,0 +1,3 @@
+# mark clients as auto generated
+client/** linguist-generated
+node_client/** linguist-generated
