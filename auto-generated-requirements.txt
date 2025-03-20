@@ -12,3 +12,4 @@ router-plugin[fastapi]~=1.0.0
 sentry-plugin[fastapi]~=1.0.0
 swagger-plugin[fastapi]~=1.0.0
 dependency-injection-plugin~=1.0.0
+nanoid==2.0.0

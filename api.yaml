@@ -3,10 +3,10 @@ info:
   title: broker_view_generative_ui
   version: 1.0.0
 paths:
-  /bot/ask:
-    get:
-      summary: Ask Bot
-      operationId: ask_bot
+  /bot/chat:
+    post:
+      summary: Chat With Bot
+      operationId: chat_with_bot
       responses:
         '200':
           description: Successful Response

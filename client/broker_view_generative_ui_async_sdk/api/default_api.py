@@ -38,7 +38,7 @@ class DefaultApi:
 
 
     @validate_call
-    async def ask_bot(
+    async def chat_with_bot(
         self,
         _request_timeout: Union[
             None,
@@ -53,7 +53,7 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> object:
-        """Ask Bot
+        """Chat With Bot
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -83,7 +83,7 @@ class DefaultApi:
         if _cookies:
             _headers = _headers or {}
             _headers["Cookie"] = "; ".join(_cookies)   
-        _param = self._ask_bot_serialize(
+        _param = self._chat_with_bot_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -105,7 +105,7 @@ class DefaultApi:
 
 
     @validate_call
-    async def ask_bot_with_http_info(
+    async def chat_with_bot_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -120,7 +120,7 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[object]:
-        """Ask Bot
+        """Chat With Bot
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -150,7 +150,7 @@ class DefaultApi:
         if _cookies:
             _headers = _headers or {}
             _headers["Cookie"] = "; ".join(_cookies)   
-        _param = self._ask_bot_serialize(
+        _param = self._chat_with_bot_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -172,7 +172,7 @@ class DefaultApi:
 
 
     @validate_call
-    async def ask_bot_without_preload_content(
+    async def chat_with_bot_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -187,7 +187,7 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Ask Bot
+        """Chat With Bot
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -217,7 +217,7 @@ class DefaultApi:
         if _cookies:
             _headers = _headers or {}
             _headers["Cookie"] = "; ".join(_cookies)   
-        _param = self._ask_bot_serialize(
+        _param = self._chat_with_bot_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -234,7 +234,7 @@ class DefaultApi:
         return response_data.response
 
 
-    def _ask_bot_serialize(
+    def _chat_with_bot_serialize(
         self,
         _request_auth,
         _content_type,
@@ -277,8 +277,8 @@ class DefaultApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/bot/ask',
+            method='POST',
+            resource_path='/bot/chat',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

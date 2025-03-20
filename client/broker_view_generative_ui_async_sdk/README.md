@@ -31,12 +31,12 @@ my_host = "http://localhost"
 api_instance = broker_view_generative_ui_async_sdk.init_api(api=broker_view_generative_ui_async_sdk.DefaultApi, host=my_host)
 
 try:
-    # Ask Bot
-    api_response = await api_instance.ask_bot()
-    print("The response of DefaultApi->ask_bot:\n")
+    # Chat With Bot
+    api_response = await api_instance.chat_with_bot()
+    print("The response of DefaultApi->chat_with_bot:\n")
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->ask_bot: %s\n" % e)
+    print("Exception when calling DefaultApi->chat_with_bot: %s\n" % e)
 
 ```
 
@@ -46,7 +46,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**ask_bot**](docs/DefaultApi.md#ask_bot) | **GET** /bot/ask | Ask Bot
+*DefaultApi* | [**chat_with_bot**](docs/DefaultApi.md#chat_with_bot) | **POST** /bot/chat | Chat With Bot
 *DefaultApi* | [**health_check_health_check_get**](docs/DefaultApi.md#health_check_health_check_get) | **GET** /health_check | Health Check
 
 

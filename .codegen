@@ -41,7 +41,7 @@
       "openapi_sdk_generator": true
     },
     "node": {
-      "enable": false,
+      "enable": true,
       "path": "node_client"
     }
   }

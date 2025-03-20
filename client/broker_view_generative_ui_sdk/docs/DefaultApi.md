@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ask_bot**](DefaultApi.md#ask_bot) | **GET** /bot/ask | Ask Bot
+[**chat_with_bot**](DefaultApi.md#chat_with_bot) | **POST** /bot/chat | Chat With Bot
 [**health_check_health_check_get**](DefaultApi.md#health_check_health_check_get) | **GET** /health_check | Health Check
 
 
-# **ask_bot**
-> object ask_bot()
+# **chat_with_bot**
+> object chat_with_bot()
 
-Ask Bot
+Chat With Bot
 
 ### Example
 
@@ -26,12 +26,12 @@ my_host = "http://localhost"
 api_instance = broker_view_generative_ui_sdk.init_api(api=broker_view_generative_ui_sdk.DefaultApi, host=my_host)
 
 try:
-    # Ask Bot
-    api_response = api_instance.ask_bot()
-    print("The response of DefaultApi->ask_bot:\n")
+    # Chat With Bot
+    api_response = api_instance.chat_with_bot()
+    print("The response of DefaultApi->chat_with_bot:\n")
     pprint(api_response)
 except Exception as e:
-    print("Exception when calling DefaultApi->ask_bot: %s\n" % e)
+    print("Exception when calling DefaultApi->chat_with_bot: %s\n" % e)
 ```
 
 
