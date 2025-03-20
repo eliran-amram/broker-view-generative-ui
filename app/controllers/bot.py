@@ -1,3 +1,4 @@
+import json
 import logging
 import uuid
 from typing import Dict, Any
@@ -22,7 +23,7 @@ def run_conversation(user_input: str, config: Dict[str, Any]):
             last_msg = event["messages"][-1]
 
     print(f'{last_msg.content}')
-    return last_msg.content
+    return json.loads(last_msg.content)
 
 
 @router.post('/chat', operation_id='chat_with_bot', response_model_exclude_unset=True)
@@ -31,6 +32,6 @@ async def chat_with_bot(request: Request):
 
     chat_id = payload.get('chat_id', str(uuid.uuid4()))
     logging.info(f"Chat ID: {chat_id}")
-    config = {"configurable": {"thread_id": chat_id}}
+    config = {"configurable": {"thread_id": 1}}  # TODO: this should be legit id
 
     return run_conversation(payload.get('message'), config)

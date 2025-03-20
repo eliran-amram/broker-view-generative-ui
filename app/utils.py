@@ -96,7 +96,7 @@ def init_app():
 
     thread_id = str(uuid.uuid4())
     logging.info(f"Thread ID: {thread_id}")
-    config = {"configurable": {"thread_id": thread_id}}
+    config = {"configurable": {"thread_id": 1}}  # TODO: this should be legit id
 
     current_date_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     system_instructions = SYSTEM_INSTRUCTIONS.format(current_date_utc=current_date_utc)
