@@ -22,6 +22,7 @@ def run_conversation(user_input: str, config: Dict[str, Any]):
             last_msg = event["messages"][-1]
 
     print(f'{last_msg.content}')
+    return last_msg.content
 
 
 @router.post('/chat', operation_id='chat_with_bot', response_model_exclude_unset=True)
@@ -32,4 +33,4 @@ async def chat_with_bot(request: Request):
     logging.info(f"Chat ID: {chat_id}")
     config = {"configurable": {"thread_id": chat_id}}
 
-    run_conversation(payload.get('message'), config)
+    return run_conversation(payload.get('message'), config)

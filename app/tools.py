@@ -1,5 +1,7 @@
 import logging
+import os
 
+import requests
 from administration_service_sdk import ApiException
 from langchain_core.tools import tool, Tool
 from pydantic import BaseModel
@@ -21,10 +23,18 @@ def admin_service_is_up() -> bool:
 def search_teams_by_name_handler(search_name: str, correlation_id: str) -> list:
     """Search administration service for teams by their name."""
     try:
-        return AppGlobals.admin_service.search_brokerage_entities(
-            search_term=search_name, entity_name=["TEAM"], x_correlation_id=correlation_id
-        ).data.teams
-    except ApiException:
+        admin_service_host = os.getenv("ADMIN_SERVICE_HOST")
+        access_token = os.getenv('ACCESS_TOKEN')
+        headers = {'X-Correlation-ID': correlation_id}
+        cookies = {'access_token': f'{access_token}; Path=/; Expires=Tue, 21 Oct 2025 11:28:50 GMT;'}
+        res = requests.get(f'{admin_service_host}/search?search_term={search_name}&entity_name=TEAM',
+                           cookies=cookies, headers=headers)
+        return res.json().get('data', {}).get('teams', [])
+        # return AppGlobals.admin_service.search_brokerage_entities(
+        #     search_term=search_name, entity_name=["TEAM"], x_correlation_id=correlation_id, _headers=headers
+        # ).data.teams
+    except ApiException as ex:
+        logging.error(ex)
         return []
 
 
@@ -32,9 +42,16 @@ def search_teams_by_name_handler(search_name: str, correlation_id: str) -> list:
 def search_brokers_by_name_handler(search_name: str, correlation_id: str) -> list:
     """Search administration service for teams by their name."""
     try:
-        return AppGlobals.admin_service.search_brokerage_entities(
-            search_term=search_name, entity_name=["BROKER"], x_correlation_id=correlation_id
-        ).data.teams
+        admin_service_host = os.getenv("ADMIN_SERVICE_HOST")
+        access_token = os.getenv('ACCESS_TOKEN')
+        headers = {'X-Correlation-ID': correlation_id}
+        cookies = {'access_token': f'{access_token}; Path=/; Expires=Tue, 21 Oct 2025 11:28:50 GMT;'}
+        res = requests.get(f'{admin_service_host}/search?search_term={search_name}&entity_name=BROKER',
+                           cookies=cookies, headers=headers)
+        return res.json().get('data', {}).get('brokers', [])
+        # return AppGlobals.admin_service.search_brokerage_entities(
+        #     search_term=search_name, entity_name=["BROKER"], x_correlation_id=correlation_id, _headers=headers
+        # ).data.teams
     except ApiException:
         return []
 
@@ -73,7 +90,6 @@ ask_human_tool = Tool(
     description="Ask the human a question and get their input.",
     args_schema=AskHuman
 )
-
 
 tools_list = [
     web_search,
