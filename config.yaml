@@ -18,7 +18,3 @@ config:
       type: list
       default-value: ''
       required: false
-    ADMIN_SERVICE_HOST:
-      type: string
-      required: true
-      default-value: 'http://localhost:9003/api'
